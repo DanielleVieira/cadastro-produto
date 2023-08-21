@@ -22,7 +22,7 @@ export const checkName = (control) => {
 
 const checkNumber = (control, invalidType) => {
   const value = Number(control.value.replace(",", "."));
-  if (value >= 0) {
+  if (value > 0) {
     control.setCustomValidity("");
     return true;
   } else {

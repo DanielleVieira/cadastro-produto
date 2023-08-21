@@ -41,14 +41,8 @@ const checkForm = () => {
 };
 
 const handleSubmit = async (e) => {
-  e.preventDefault();
   checkForm();
-  if (
-    $codeControl.checkValidity() &&
-    $nameControl.checkValidity() &&
-    $amountControl.checkValidity() &&
-    $priceControl.checkValidity()
-  ) {
+  if ($registerForm.checkValidity()) {
     productService.addProduct(
       $codeControl.value,
       $nameControl.value,
@@ -56,6 +50,9 @@ const handleSubmit = async (e) => {
       Number($priceControl.value.replace(",", "."))
     );
     productList();
+  } else {
+    e.preventDefault();
+    e.stopPropagation();
   }
 };
 

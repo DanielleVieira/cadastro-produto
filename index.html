@@ -20,7 +20,7 @@
       </header>
       <hr />
       <section id="product-register">
-        <form id="product-register-form" novalidate>
+        <form id="product-register-form" novalidate class="d-flex flex-column">
           <label for="code-control" class="form-label">
             Código
             <input
@@ -45,12 +45,11 @@
           <button type="submit" id="product-register-btn" class="btn">
             Cadastrar
           </button>
-          <button type="reset" class="btn">Limpar</button>
         </form>
       </section>
       <hr />
       <section id="product-list">
-        <section id="table-container" class="responsive-table">
+        <article id="table-container" class="responsive-table">
           <table id="product-table" class="table table-striped table-hover">
             <caption>
               Produtos Cadastrados
@@ -66,7 +65,7 @@
             </thead>
             <tbody id="product-table-body"></tbody>
           </table>
-        </section>
+        </article>
       </section>
     </main>
 
