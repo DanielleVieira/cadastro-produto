@@ -1,0 +1,47 @@
+:root {
+  --background: white;
+  --primary-color: #d366cc;
+  --secondary-color: #f7e1f6;
+  --hover-color: #864082;
+  --text-color: white;
+}
+
+#app {
+  background-image: url("../assets/background2.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 5% center;
+}
+
+#main {
+  background-color: var(--background);
+}
+
+#main form label {
+  display: block;
+  margin: 1rem 0rem;
+}
+
+#main form button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+#main form button:hover {
+  background-color: var(--hover-color);
+}
+
+#main form button:active {
+  background-color: var(--secondary-color);
+}
+
+#main table th {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+#main h1 {
+  color: var(--primary-color);
+  font-weight: bolder;
+}

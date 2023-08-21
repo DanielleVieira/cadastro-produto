@@ -1,0 +1,19 @@
+#app {
+  min-height: 100vh;
+  width: 100wh;
+  display: grid;
+  grid-template-areas: ". . ." ". main ." ". . .";
+  grid-template-columns: 5% auto 5%;
+  grid-template-rows: 5rem auto 5rem;
+}
+
+#main {
+  grid-area: main;
+}
+
+@media screen and (min-width: 700px) {
+  #app {
+    grid-template-areas: ". . ." ". main ." ". . .";
+    grid-template-columns: auto 45% 5%;
+  }
+}
