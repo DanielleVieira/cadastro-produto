@@ -8,8 +8,8 @@ export const addProduct = (code, name, amount, price) => {
   const newProduct = {
     code: code.toUpperCase(),
     name: name.toUpperCase(),
-    amount,
-    price,
+    amount: Number(amount),
+    price: Number(price.replace(",", ".")),
   };
   const productList = getProducts();
   saveProducts([...productList, newProduct]);

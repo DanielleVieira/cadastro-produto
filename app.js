@@ -46,8 +46,8 @@ const handleSubmit = async (e) => {
     productService.addProduct(
       $codeControl.value,
       $nameControl.value,
-      Number($amountControl.value),
-      Number($priceControl.value.replace(",", "."))
+      $amountControl.value,
+      $priceControl.value
     );
     productList();
   } else {
