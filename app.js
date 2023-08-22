@@ -9,25 +9,32 @@ const $priceControl = document.getElementById("price-control");
 const $productList = document.getElementById("product-table-body");
 
 const productList = () => {
-  $productList.innerHTML = "";
-  productService.getProducts().map((product) => {
-    const $newRow = document.createElement("tr", {
-      id: product.code,
-      scope: "row",
-    });
-    $newRow.innerHTML = `
+  $productList.innerHTML =
+    productService
+      .getProducts()
+      .map((product) => {
+        return `
+      <tr id="${product.code}" scope="row">
         <td>${product.code}</td>
         <td>${product.name}</td>
         <td>${product.amount}</td>
         <td>${product.price.toLocaleString("pt-BR", {
+          minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}</td>
         <td>${(product.amount * product.price).toLocaleString("pt-BR", {
+          minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}</td>
+      </tr>
     `;
-    $productList.appendChild($newRow);
-  });
+      })
+      .join("") ||
+    `
+      <tr id="empty" scope="row">
+        <td colspan="5">Nada cadastrado ainda ...</td>
+      </tr>
+      `;
 };
 productList();
 
@@ -49,7 +56,6 @@ const handleSubmit = async (e) => {
       $amountControl.value,
       $priceControl.value
     );
-    productList();
   } else {
     e.preventDefault();
     e.stopPropagation();
