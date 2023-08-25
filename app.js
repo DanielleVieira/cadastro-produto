@@ -1,5 +1,7 @@
 import * as productService from "./services/productService.js";
 import * as productValidate from "./utils/productValidate.js";
+import { tableRowComponent } from "./components/tableRowComponent.js";
+import { tableEmptyRowComponent } from "./components/tableEmptyRowComponent.js";
 
 const $registerForm = document.getElementById("product-register-form");
 const $codeControl = document.getElementById("code-control");
@@ -13,28 +15,21 @@ const productList = () => {
     productService
       .getProducts()
       .map((product) => {
-        return `
-      <tr id="${product.code}" scope="row">
-        <td>${product.code}</td>
-        <td>${product.name}</td>
-        <td>${product.amount}</td>
-        <td>${product.price.toLocaleString("pt-BR", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}</td>
-        <td>${(product.amount * product.price).toLocaleString("pt-BR", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}</td>
-      </tr>
-    `;
+        return tableRowComponent(
+          product.code,
+          product.name,
+          product.amount,
+          product.price.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }),
+          (product.amount * product.price).toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+        );
       })
-      .join("") ||
-    `
-      <tr id="empty" scope="row">
-        <td colspan="5">Nada cadastrado ainda ...</td>
-      </tr>
-      `;
+      .join("") || tableEmptyRowComponent();
 };
 productList();
 
